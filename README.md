@@ -4,6 +4,7 @@ LIRI node app using API's
 What Each Command Does
 
 -----SEARCH FOR CONCERTS:-----
+
 command:
 node liri.js concert-this <artist/band name here>
 
@@ -17,6 +18,7 @@ Venue location
 Date of the Event (use moment to format this as "MM/DD/YYYY")
 
 -----SEARCH FOR SONGS:-----
+
 command:
 node liri.js spotify-this-song 
 
@@ -50,6 +52,7 @@ Step Four: On the next screen, scroll down to where you see your client id and c
 
 
 -----SEARCH FOR MOVIES:-----
+
 command:
 node liri.js movie-this '<movie name here>'
 
@@ -68,6 +71,7 @@ If the user doesn't type a movie in, the program will output data for the movie 
 
 
 -----SEARCH FOR A SONG IN A TEXT FILE:-----
+
 command:
 node liri.js do-what-it-says
 
