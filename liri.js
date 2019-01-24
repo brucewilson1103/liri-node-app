@@ -10,6 +10,7 @@ var inquirer = require("inquirer");
 var moment = require('moment');
 // concertArtist-this
 var axios = require("axios");
+var fs = require("fs");
 
 
 var nodeArgs = process.argv;
@@ -74,7 +75,7 @@ else if (nodeArgs[2] === "spotify-this-song") {
     }
   ])
   .then(function(inquirerResponse) {
-    // If the inquirerResponse confirms, we displays the inquirerResponse's username and pokemon from the answers.
+    // If the inquirerResponse confirms,
     if (inquirerResponse.confirm) {
       console.log("\nWe will search for " + inquirerResponse.name);
 
@@ -101,11 +102,49 @@ else if (nodeArgs[2] === "spotify-this-song") {
 }
 
 else if (nodeArgs[2] === "movie-this") {
+
+    
   
 }
 
 else if (nodeArgs[2] === "do-what-it-says") {
   // read text from the random.txt file
+// This block of code will read from the "random.txt" file.
+// The code will store the contents of the reading inside the variable "data"
+fs.readFile("random.txt", "utf8", function(error, data) {
+
+  // If the code experiences any errors it will log the error to the console.
+  if (error) {
+    return console.log(error);
+  }
+
+  // We will then print the contents of data
+  console.log(data);
+
+  // Then split it by commas (to make it more readable)
+  var dataArr = data.split(",");
+
+  // We will then re-display the content as an array for later use.
+  console.log(dataArr);
+
+  // maybe do an async await here.?
+            spotify.search({ type: 'track', query:dataArr[1] }, function(err, data) {
+              if (err) {
+                return console.log('Error occurred: ' + err);
+              }
+            
+            console.log(data.tracks.items);
+            for (var i=0; i<data.tracks.items.length; i++){
+              console.log( data.tracks.items[i].name +", " +data.tracks.items[i].artists[0].name);
+              
+              console.log( data.tracks.items[i].preview_url);
+              console.log( data.tracks.items[i].album.name);
+              console.log("_______________________________________");
+            }
+            });
+            
+});
+
   // require fs        extract value from string pass to 4th part of array
 }
 
