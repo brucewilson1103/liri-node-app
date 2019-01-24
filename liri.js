@@ -37,6 +37,10 @@ if (nodeArgs[2] === "concert-this") {
   axios.get(queryUrl).then(
     function (response) {
       console.log(JSON.stringify(response.data, null, 2));
+      if (response.data.length === 0){
+        console.log("This band must not be on tour, as the database has returned no results.")
+      }
+      else {
       console.log(response.data[0].venue.name)
       for (var i=0; i<response.data.length; i++){
         console.log( response.data[i].venue.city +", " +response.data[i].venue.country );
@@ -45,7 +49,7 @@ if (nodeArgs[2] === "concert-this") {
         console.log( moment(response.data[i].datetime).format("dddd, MMMM Do YYYY"));
         console.log("_______________________________________");
       }
-     
+    }
     }
   );
 }
@@ -57,7 +61,8 @@ else if (nodeArgs[2] === "spotify-this-song") {
     {
       type: "input",
       message: "What is the name of the song that you are looking for?",
-      name: "name"
+      name: "name",
+      default: "ace of base the sign"
     },
     // Here we give the user a list to choose from.
     // {
