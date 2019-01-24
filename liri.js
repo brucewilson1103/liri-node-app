@@ -12,7 +12,6 @@ var moment = require('moment');
 var axios = require("axios");
 var fs = require("fs");
 
-
 var nodeArgs = process.argv;
 // Loop through all the words in the node argument
 // And do a little for-loop magic to handle the inclusion of "+"s
@@ -38,7 +37,7 @@ if (nodeArgs[2] === "concert-this") {
     function (response) {
       console.log(JSON.stringify(response.data, null, 2));
       if (response.data.length === 0){
-        console.log("This band must not be on tour, as the database has returned no results.")
+        console.log("This band must not be on tour, as the database has not returned any results. Please try again with a different band that you would like to see.")
       }
       else {
       console.log(response.data[0].venue.name)
@@ -64,13 +63,7 @@ else if (nodeArgs[2] === "spotify-this-song") {
       name: "name",
       default: "ace of base the sign"
     },
-    // Here we give the user a list to choose from.
-    // {
-    //   type: "list",
-    //   message: "Are you looking for an album, song or artist?",
-    //   choices: ["Album", "Song", "Artist"],
-    //   nameChoice: "select"
-    // },
+   
     // Here we ask the user to confirm.
     {
       type: "confirm",
@@ -196,26 +189,10 @@ fs.readFile("random.txt", "utf8", function(error, data) {
             });
             
 });
-
-  // require fs        extract value from string pass to 4th part of array
 }
 
 else {
   console.log("Sorry something went wrong.")
 }
-// Then run a request with axios to the OMDB API with the movie specified
 
-// var inquirer = require("inquirer");
-
-
-// spotify.search({
-//   type: 'track',
-//   query: 'The Sign'
-// }, function (err, data) {
-//   if (err) {
-//     return console.log('Error occurred: ' + err);
-//   }
-
-//   console.log(data);
-// });
 
