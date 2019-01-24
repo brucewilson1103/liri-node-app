@@ -1,5 +1,10 @@
 # liri-node-app-
 LIRI node app using API's
+Follow this link for a video walkthrough of LIRI on Youtube
+
+Click below:
+
+https://www.youtube.com/watch?v=LT3dXQJYnMc
 
 What Each Command Does
 
