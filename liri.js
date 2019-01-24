@@ -128,11 +128,27 @@ else if (nodeArgs[2] === "movie-this") {
   var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
   
   // // This line is just to help us debug against the actual URL.
-  // console.log(queryUrl);
+  //  * Title of the movie.
+  // * Year the movie came out.
+  // * IMDB Rating of the movie.
+  // * Rotten Tomatoes Rating of the movie.
+  // * Country where the movie was produced.
+  // * Language of the movie.
+  // * Plot of the movie.
+  // * Actors in the movie.
+  console.log(queryUrl);
   
   axios.get(queryUrl).then(
     function(response) {
+      console.log("Movie Title: " + response.data.Title);
       console.log("Release Year: " + response.data.Year);
+      console.log("Release Rated: " + response.data.Rated);
+      console.log("Rotten Tomatoes: " + response.data.Ratings.Value);
+      console.log("Country Produced: " + response.data.Country);
+      console.log("Language: " + response.data.Language);
+      console.log("Plot: " + response.data.Plot);
+      console.log("Actors: " + response.data.Actors);
+      console.log("_______________________________________");
     }
   );
   
